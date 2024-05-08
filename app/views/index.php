@@ -130,7 +130,7 @@
     <script type="module" src="../constants/en.js"></script>
     <script type="module" src="../constants/es.js"></script>
     <script type="module" src="../constants/pt.js"></script>
-    <script type="module" src="utils/models/Event.js"></script>
-    <script type="module" src="utils/models/LocalStorage.js"></script>
+    <script type="module" src="utils/Event.js"></script>
+    <script type="module" src="utils/LocalStorage.js"></script>
     <script type="module" src="js/home.js"></script>
 </html>
