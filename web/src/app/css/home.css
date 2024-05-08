@@ -1,0 +1,15 @@
+.hero {
+    position: relative;
+    background-image: url("https://via.placeholder.com/1500x600");
+    background-size: cover;
+    height: 600px;
+    color: #fff;
+    display: flex;
+    align-items: flex-end;
+}
+.hero-text {
+    padding-bottom: 50px;
+}
+.gap {
+    column-gap: 30px;
+}
