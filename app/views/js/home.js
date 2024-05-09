@@ -1,5 +1,6 @@
 import { lang } from "../../constants/lang.js";
 import { Events } from "../../utils/Event.js";
+import { Language } from "../../utils/Language.js";
 import { LocalStorage } from "../../utils/LocalStorage.js";
 
 class Home {
@@ -38,6 +39,8 @@ class Home {
             });
         }
 
+        Language.setLanguage(this);
+
         this.#setLanguage();
     }
 
@@ -75,6 +78,10 @@ class Home {
 
     get inputs() {
         return this.#inputs;
+    }
+
+    get menus() {
+        return this.#menus;
     }
 }
 
