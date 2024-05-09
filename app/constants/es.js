@@ -6,6 +6,9 @@ export const es = {
         authors: "Authors",
         footerCopy: "&copy; 2024 Meu Blog. Todos os direitos reservados.",
     },
+    menus: {
+        dropDownTitle: "Language",
+    },
     inputs: {
         searchInput: "Search",
     },

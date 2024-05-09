@@ -68,6 +68,17 @@
                                 >Autores</a
                             >
                         </li>
+                        <li class="nav-item">
+                             <div class="dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Mais
+                                </a>
+
+                                <div class="dropdown-menu" id="dropDown" aria-labelledby="dropdownMenuLink">
+                                   
+                                </div>
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -130,7 +141,8 @@
     <script type="module" src="../constants/en.js"></script>
     <script type="module" src="../constants/es.js"></script>
     <script type="module" src="../constants/pt.js"></script>
-    <script type="module" src="utils/Event.js"></script>
-    <script type="module" src="utils/LocalStorage.js"></script>
+    <script type="module" src="../utils/Event.js"></script>
+    <script type="module" src="../utils/Language.js"></script>
+    <script type="module" src="../utils/LocalStorage.js"></script>
     <script type="module" src="js/home.js"></script>
 </html>

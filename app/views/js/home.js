@@ -1,5 +1,6 @@
 import { lang } from "../../constants/lang.js";
-import { LocalStorage } from "../utils/models/LocalStorage.js";
+import { Events } from "../../utils/Event.js";
+import { LocalStorage } from "../../utils/LocalStorage.js";
 
 class Home {
     #text = {
@@ -9,12 +10,34 @@ class Home {
         authors: document.querySelector("#authors-link"),
         footerCopy: document.querySelector("#footer-copy"),
     };
-
+    #menus = {
+        dropDownMenu: document.querySelector("#dropDown"),
+        dropDownTitle: document.querySelector("#dropdownMenuLink"),
+        dropDownMenuItes: document.querySelectorAll(".dropdown-item"),
+    };
     #inputs = {
         searchInput: document.querySelector("#search"),
     };
 
-    init() {
+    async init() {
+        Object.keys(lang).map((v) => {
+            this.#menus.dropDownMenu.innerHTML += `<a class="dropdown-item" href="#">${
+                v[0].toUpperCase() + v.slice(1)
+            }</a>`;
+        });
+
+        this.#menus.dropDownMenuItes = [
+            ...document.querySelectorAll(".dropdown-item"),
+        ];
+
+        for (const el of this.#menus.dropDownMenuItes) {
+            Events.setEvents("click", el, () => {
+                this.#setLanguage(
+                    lang[el.innerHTML.toLocaleLowerCase()] ?? lang.pt
+                );
+            });
+        }
+
         this.#setLanguage();
     }
 
@@ -24,15 +47,25 @@ class Home {
         return langToUse;
     }
 
-    #setLanguage() {
-        const lang = this.#getLanguage();
+    #setLanguage(language) {
+        const lang = language ?? this.#getLanguage();
 
         for (const key in lang.text) {
-            this.text[key].innerHTML = lang.text[key];
+            if (key in lang.text) {
+                this.text[key].innerHTML = lang.text[key];
+            }
         }
 
         for (const key in lang.inputs) {
-            this.inputs[key].placeholder = lang.inputs[key];
+            if (key in lang.inputs) {
+                this.inputs[key].placeholder = lang.inputs[key];
+            }
+        }
+
+        for (const key in lang.menus) {
+            if (key in this.#menus) {
+                this.#menus[key].innerHTML = lang.menus[key];
+            }
         }
     }
 
