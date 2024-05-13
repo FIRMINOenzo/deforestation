@@ -68,6 +68,17 @@
                                 >Autores</a
                             >
                         </li>
+                        <li class="nav-item">
+                             <div class="dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Mais
+                                </a>
+
+                                <div class="dropdown-menu" id="dropDown" aria-labelledby="dropdownMenuLink">
+                                   
+                                </div>
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -81,10 +92,35 @@
                 </div>
             </div>
         </div>
+
+
         <div class="mt-5 container px-5">
             <div class="">
                 <h2>Últimas Postagens</h2>
                 <div class="">
+                    <?php 
+                    include_once __DIR__ . "/../../api/v1/post/all.php";
+
+                    $posts = $postAllRoutes->all();
+
+                    for($i = 0; $i < count($posts); $i++) { 
+                        $post = $posts[$i];    
+                    ?>
+                      <div class="card mb-3">
+                        <img
+                            src="https://via.placeholder.com/800x400"
+                            class="card-img-top"
+                            alt="..."
+                        />
+                        <div class="card-body">
+                            <h5 class="card-title"><?=$post->getTitle()?></h5>
+                            <p class="card-text">
+                                Breve descrição da postagem.
+                            </p>
+                            <a href="#" class="btn btn-primary">Leia mais</a>
+                        </div>
+                    </div>
+                    <?php } ?>
                     <div class="card mb-3">
                         <img
                             src="https://via.placeholder.com/800x400"
@@ -130,7 +166,8 @@
     <script type="module" src="../constants/en.js"></script>
     <script type="module" src="../constants/es.js"></script>
     <script type="module" src="../constants/pt.js"></script>
-    <script type="module" src="utils/Event.js"></script>
-    <script type="module" src="utils/LocalStorage.js"></script>
+    <script type="module" src="../utils/Event.js"></script>
+    <script type="module" src="../utils/Language.js"></script>
+    <script type="module" src="../utils/LocalStorage.js"></script>
     <script type="module" src="js/home.js"></script>
 </html>

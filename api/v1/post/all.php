@@ -9,11 +9,11 @@ class PostAllRoutes
     $this->postService = $postService;
   }
 
-  public function all(): void
+  public function all(): array
   {
     $posts = $this->postService->getPosts();
 
-    echo json_encode($posts);
+    return $posts;
   }
 }
 
@@ -25,5 +25,3 @@ require_once __DIR__ . "/../../services/PostService.php";
 $conn = connectDatabase();
 $postService = new PostService($conn);
 $postAllRoutes = new PostAllRoutes($postService);
-
-$postAllRoutes->all();
