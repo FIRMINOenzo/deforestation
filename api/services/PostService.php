@@ -2,24 +2,22 @@
 
 class PostService
 {
-  private PDO $conn;
+  private mysqli $conn;
 
-  public function __construct(PDO $conn)
+  public function __construct(mysqli $conn)
   {
     $this->conn = $conn;
   }
 
   public function createPost(Post $post): Post
   {
-    $this->conn->beginTransaction();
+    $this->conn->begin_transaction();
 
-    $stmt = $this->conn->prepare("INSERT INTO posts(title, content, author_id) VALUES (:title, :content, :author_id);");
-    $stmt->bindValue(":title", $post->getTitle());
-    $stmt->bindValue(":content", $post->getContent());
-    $stmt->bindValue(":author_id", $post->getAuthorId());
+    $stmt = $this->conn->prepare("INSERT INTO posts(title, content, author_id) VALUES (?, ?, ?)");
+    $stmt->bind_param("ssi", $post->getTitle(), $post->getContent(), $post->getAuthorId());
     $stmt->execute();
 
-    $post->setId($this->conn->lastInsertId());
+    $post->setId($this->conn->insert_id);
 
     $this->conn->commit();
 
@@ -28,22 +26,24 @@ class PostService
 
   public function getPost(int $id): ?Post
   {
-    $stmt = $this->conn->prepare("SELECT * FROM posts WHERE id = :id;");
-    $stmt->bindValue(":id", $id);
+    $stmt = $this->conn->prepare("SELECT * FROM posts WHERE id = ?");
+    $stmt->bind_param("i", $id);
     $stmt->execute();
 
-    $post = $stmt->fetchObject(Post::class);
+    $result = $stmt->get_result();
+    $post = $result->fetch_object('Post');
 
     if (!$post) {
       return null;
     }
 
     // get comments for post
-    $stmt = $this->conn->prepare("SELECT * FROM comments WHERE post_id = :post_id;");
-    $stmt->bindValue(":post_id", $post->getId());
+    $stmt = $this->conn->prepare("SELECT * FROM comments WHERE post_id = ?");
+    $stmt->bind_param("i", $post->getId());
     $stmt->execute();
 
-    $comments = $stmt->fetchAll(PDO::FETCH_CLASS, Comment::class);
+    $result = $stmt->get_result();
+    $comments = $result->fetch_all(MYSQLI_ASSOC);
 
     $post->setComments($comments);
 
@@ -52,29 +52,42 @@ class PostService
 
   public function getPosts(): array
   {
-    $stmt = $this->conn->prepare("SELECT * FROM posts;");
+    $stmt = $this->conn->prepare("SELECT * FROM posts");
     $stmt->execute();
 
-    return $stmt->fetchAll(PDO::FETCH_CLASS, Post::class);
+    $result = $stmt->get_result();
+    $data = $result->fetch_all(MYSQLI_ASSOC);
+
+    $postsList = [];
+
+    for ($i = 0; $i < count($data); $i++) {
+      $post = new Post();
+      $post->setId($data[$i]['id']);
+      $post->setTitle($data[$i]['title']);
+      $post->setContent($data[$i]['content']);
+      $post->setAuthorId($data[$i]['author_id']);
+      $postsList[$i] = $post;
+    }
+
+    return $postsList;
   }
 
   public function getPostsByAuthor(int $authorId): array
   {
-    $stmt = $this->conn->prepare("SELECT * FROM posts WHERE author_id = :author_id;");
-    $stmt->bindValue(":author_id", $authorId);
+    $stmt = $this->conn->prepare("SELECT * FROM posts WHERE author_id = ?");
+    $stmt->bind_param("i", $authorId);
     $stmt->execute();
 
-    return $stmt->fetchAll(PDO::FETCH_CLASS, Post::class);
+    $result = $stmt->get_result();
+    return $result->fetch_all(MYSQLI_ASSOC);
   }
 
   public function updatePost(Post $post): Post
   {
-    $this->conn->beginTransaction();
+    $this->conn->begin_transaction();
 
-    $stmt = $this->conn->prepare("UPDATE posts SET title = :title, content = :content WHERE id = :id;");
-    $stmt->bindValue(":title", $post->getTitle());
-    $stmt->bindValue(":content", $post->getContent());
-    $stmt->bindValue(":id", $post->getId());
+    $stmt = $this->conn->prepare("UPDATE posts SET title = ?, content = ? WHERE id = ?");
+    $stmt->bind_param("ssi", $post->getTitle(), $post->getContent(), $post->getId());
     $stmt->execute();
 
     $this->conn->commit();
@@ -84,10 +97,10 @@ class PostService
 
   public function deletePost(int $id): void
   {
-    $this->conn->beginTransaction();
+    $this->conn->begin_transaction();
 
-    $stmt = $this->conn->prepare("DELETE FROM posts WHERE id = :id;");
-    $stmt->bindValue(":id", $id);
+    $stmt = $this->conn->prepare("DELETE FROM posts WHERE id = ?");
+    $stmt->bind_param("i", $id);
     $stmt->execute();
 
     $this->conn->commit();

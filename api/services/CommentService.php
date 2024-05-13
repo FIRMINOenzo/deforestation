@@ -2,24 +2,22 @@
 
 class CommentService
 {
-  private PDO $conn;
+  private mysqli $conn;
 
-  public function __construct(PDO $conn)
+  public function __construct(mysqli $conn)
   {
     $this->conn = $conn;
   }
 
   public function createComment(Comment $comment): Comment
   {
-    $this->conn->beginTransaction();
+    $this->conn->begin_transaction();
 
-    $stmt = $this->conn->prepare("INSERT INTO comments(content, post_id, user_id) VALUES (:content, :post_id, :user_id);");
-    $stmt->bindValue(":content", $comment->getContent());
-    $stmt->bindValue(":post_id", $comment->getPostId());
-    $stmt->bindValue(":user_id", $comment->getUserId());
+    $stmt = $this->conn->prepare("INSERT INTO comments(content, post_id, user_id) VALUES (?, ?, ?)");
+    $stmt->bind_param("sii", $comment->getContent(), $comment->getPostId(), $comment->getUserId());
     $stmt->execute();
 
-    $comment->setId($this->conn->lastInsertId());
+    $comment->setId($this->conn->insert_id);
 
     $this->conn->commit();
 
@@ -28,11 +26,12 @@ class CommentService
 
   public function getComment(int $id): ?Comment
   {
-    $stmt = $this->conn->prepare("SELECT * FROM comments WHERE id = :id;");
-    $stmt->bindValue(":id", $id);
+    $stmt = $this->conn->prepare("SELECT * FROM comments WHERE id = ?");
+    $stmt->bind_param("i", $id);
     $stmt->execute();
 
-    $comment = $stmt->fetchObject(Comment::class);
+    $result = $stmt->get_result();
+    $comment = $result->fetch_object('Comment');
 
     if (!$comment) {
       return null;
@@ -43,27 +42,30 @@ class CommentService
 
   public function getComments(): array
   {
-    $stmt = $this->conn->prepare("SELECT * FROM comments;");
+    $stmt = $this->conn->prepare("SELECT * FROM comments");
     $stmt->execute();
 
-    return $stmt->fetchAll(PDO::FETCH_CLASS, Comment::class);
+    $result = $stmt->get_result();
+    return $result->fetch_all(MYSQLI_ASSOC);
   }
 
   public function getCommentsByPost(int $postId): array
   {
-    $stmt = $this->conn->prepare("SELECT * FROM comments WHERE post_id = :post_id;");
-    $stmt->bindValue(":post_id", $postId);
+    $stmt = $this->conn->prepare("SELECT * FROM comments WHERE post_id = ?");
+    $stmt->bind_param("i", $postId);
     $stmt->execute();
 
-    return $stmt->fetchAll(PDO::FETCH_CLASS, Comment::class);
+    $result = $stmt->get_result();
+    return $result->fetch_all(MYSQLI_ASSOC);
   }
 
   public function getCommentsByUser(int $userId): array
   {
-    $stmt = $this->conn->prepare("SELECT * FROM comments WHERE user_id = :user_id;");
-    $stmt->bindValue(":user_id", $userId);
+    $stmt = $this->conn->prepare("SELECT * FROM comments WHERE user_id = ?");
+    $stmt->bind_param("i", $userId);
     $stmt->execute();
 
-    return $stmt->fetchAll(PDO::FETCH_CLASS, Comment::class);
+    $result = $stmt->get_result();
+    return $result->fetch_all(MYSQLI_ASSOC);
   }
 }

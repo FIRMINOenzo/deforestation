@@ -19,7 +19,9 @@ class PostAllRoutes
 
 // Path: api/v1/post/all.php
 
+require_once __DIR__ . "/../../env.php";
 require_once __DIR__ . "/../../shared/database/database.php";
+require_once __DIR__ . "/../../models/Post.php";
 require_once __DIR__ . "/../../services/PostService.php";
 
 $conn = connectDatabase();

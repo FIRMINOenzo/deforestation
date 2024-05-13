@@ -23,9 +23,9 @@ function populateArray()
       "INSERT INTO posts (title, content, author_id) VALUES ('Terceiro Post', 'Este é o conteúdo do terceiro post.', 2)"
     ],
     "commentInserts" => [
-      "INSERT INTO comments (content, post_id, user_id) VALUES ('Primeiro comentário', 1, 1)",
-      "INSERT INTO comments (content, post_id, user_id) VALUES ('Segundo comentário', 1, 2)",
-      "INSERT INTO comments (content, post_id, user_id) VALUES ('Terceiro comentário', 2, 1)"
+      "INSERT INTO comments (content, post_id, user_id) VALUES ('Primeiro comentário', 2, 1)",
+      "INSERT INTO comments (content, post_id, user_id) VALUES ('Segundo comentário', 2, 2)",
+      "INSERT INTO comments (content, post_id, user_id) VALUES ('Terceiro comentário', 3, 1)"
     ],
   ];
 }

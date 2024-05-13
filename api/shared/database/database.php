@@ -1,20 +1,16 @@
 <?php
 
-$count = 1;
-
-function connectDatabase()
+function connectDatabase($count = 1)
 {
-  global $count;
-
   try {
+    include_once __DIR__ . '/../../env.php';
     $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT);
     return $conn;
   } catch (Exception $e) {
     if ($count < 3) {
-      $count++;
-      return connectDatabase();
+      return connectDatabase($count + 1);
     }
 
-    return "Failed connection: " . $e->getMessage();
+    throw new Exception("Failed connection: " . $e->getMessage());
   }
 }
