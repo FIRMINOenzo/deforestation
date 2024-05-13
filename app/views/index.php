@@ -92,10 +92,35 @@
                 </div>
             </div>
         </div>
+
+
         <div class="mt-5 container px-5">
             <div class="">
                 <h2>Últimas Postagens</h2>
                 <div class="">
+                    <?php 
+                    include_once __DIR__ . "/../../api/v1/post/all.php";
+
+                    $posts = $postAllRoutes->all();
+
+                    for($i = 0; $i < count($posts); $i++) { 
+                        $post = $posts[$i];    
+                    ?>
+                      <div class="card mb-3">
+                        <img
+                            src="https://via.placeholder.com/800x400"
+                            class="card-img-top"
+                            alt="..."
+                        />
+                        <div class="card-body">
+                            <h5 class="card-title"><?=$post->getTitle()?></h5>
+                            <p class="card-text">
+                                Breve descrição da postagem.
+                            </p>
+                            <a href="#" class="btn btn-primary">Leia mais</a>
+                        </div>
+                    </div>
+                    <?php } ?>
                     <div class="card mb-3">
                         <img
                             src="https://via.placeholder.com/800x400"

@@ -7,6 +7,7 @@ class Post
   private string $content;
   private DateTime $created_at;
   private int $author_id;
+  private string $description;
   private array $comments;
 
   public function __construct()
@@ -24,11 +25,12 @@ class Post
     return $instance;
   }
 
-  public static function withoutComments(int $id, string $title, string $content, DateTime $created_at, int $author_id): Post
+  public static function withoutComments(int $id, string $title, string $content, DateTime $created_at, int $author_id, string $description): Post
   {
     $instance = new self();
     $instance->id = $id;
     $instance->title = $title;
+    $instance->description = $description;
     $instance->content = $content;
     $instance->created_at = $created_at;
     $instance->author_id = $author_id;
@@ -88,6 +90,10 @@ class Post
   public function getComments(): array
   {
     return $this->comments;
+  }
+
+  public function getDescription(): string {
+    return $this->description;
   }
 
   public function setComments(array $comments): void
