@@ -105,4 +105,14 @@ class PostService
 
     $this->conn->commit();
   }
+
+  public function getPostsByTitle(string $title): array
+  {
+    $stmt = $this->conn->prepare("SELECT * FROM posts WHERE title LIKE %?%");
+    $stmt->bind_param("s", $title);
+    $stmt->execute();
+
+    $result = $stmt->get_result();
+    return $result->fetch_all(MYSQLI_ASSOC);
+  }
 }

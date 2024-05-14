@@ -8,13 +8,20 @@ class Comment
   private int $post_id;
   private int $user_id;
 
-  public function __construct(int $id, string $content, DateTime $created_at, int $post_id, int $user_id)
+  public function __construct()
   {
-    $this->id = $id;
-    $this->content = $content;
-    $this->created_at = $created_at;
-    $this->post_id = $post_id;
-    $this->user_id = $user_id;
+  }
+
+  public static function withAllArgs(int $id, string $content, DateTime $created_at, int $post_id, int $user_id): Comment
+  {
+    $comment = new Comment();
+    $comment->setId($id);
+    $comment->setContent($content);
+    $comment->setCreatedAt($created_at);
+    $comment->setPostId($post_id);
+    $comment->setUserId($user_id);
+
+    return $comment;
   }
 
   public function getId(): int
