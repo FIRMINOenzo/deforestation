@@ -64,6 +64,7 @@ class PostService
       $post = new Post();
       $post->setId($data[$i]['id']);
       $post->setTitle($data[$i]['title']);
+      $post->setDescription($data[$i]["description"]);
       $post->setContent($data[$i]['content']);
       $post->setAuthorId($data[$i]['author_id']);
       $postsList[$i] = $post;

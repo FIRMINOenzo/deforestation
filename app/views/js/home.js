@@ -1,7 +1,6 @@
 import { lang } from "../../constants/lang.js";
 import { Events } from "../../utils/Event.js";
 import { Language } from "../../utils/Language.js";
-import { LocalStorage } from "../../utils/LocalStorage.js";
 
 class Home {
     #text = {
@@ -22,55 +21,55 @@ class Home {
 
     async init() {
         Object.keys(lang).map((v) => {
-            this.#menus.dropDownMenu.innerHTML += `<a class="dropdown-item" href="#">${
+            this.menus.dropDownMenu.innerHTML += `
+            <a class="dropdown-item" href="#">${
                 v[0].toUpperCase() + v.slice(1)
             }</a>`;
         });
 
-        this.#menus.dropDownMenuItes = [
+        this.menus.dropDownMenuItes = [
             ...document.querySelectorAll(".dropdown-item"),
         ];
 
-        for (const el of this.#menus.dropDownMenuItes) {
+        for (const el of this.menus.dropDownMenuItes) {
             Events.setEvents("click", el, () => {
-                this.#setLanguage(
-                    lang[el.innerHTML.toLocaleLowerCase()] ?? lang.pt
+                console.log(el.innerHTML);
+
+                Language.setLanguage(
+                    this,
+                    lang[el.innerHTML.toLowerCase()] ?? lang.pt
                 );
             });
         }
-
-        Language.setLanguage(this);
-
-        this.#setLanguage();
     }
 
-    #getLanguage() {
-        const langToUse = lang[navigator.language.slice(0, 2)];
+    // #getLanguage() {
+    //     const langToUse = lang[navigator.language.slice(0, 2)];
 
-        return langToUse;
-    }
+    //     return langToUse;
+    // }
 
-    #setLanguage(language) {
-        const lang = language ?? this.#getLanguage();
+    // #setLanguage(language) {
+    //     const lang = language ?? this.#getLanguage();
 
-        for (const key in lang.text) {
-            if (key in lang.text) {
-                this.text[key].innerHTML = lang.text[key];
-            }
-        }
+    //     for (const key in lang.text) {
+    //         if (key in lang.text) {
+    //             this.text[key].innerHTML = lang.text[key];
+    //         }
+    //     }
 
-        for (const key in lang.inputs) {
-            if (key in lang.inputs) {
-                this.inputs[key].placeholder = lang.inputs[key];
-            }
-        }
+    //     for (const key in lang.inputs) {
+    //         if (key in lang.inputs) {
+    //             this.inputs[key].placeholder = lang.inputs[key];
+    //         }
+    //     }
 
-        for (const key in lang.menus) {
-            if (key in this.#menus) {
-                this.#menus[key].innerHTML = lang.menus[key];
-            }
-        }
-    }
+    //     for (const key in lang.menus) {
+    //         if (key in this.#menus) {
+    //             this.#menus[key].innerHTML = lang.menus[key];
+    //         }
+    //     }
+    // }
 
     get text() {
         return this.#text;
