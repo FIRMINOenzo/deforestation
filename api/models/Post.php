@@ -87,6 +87,10 @@ class Post
     $this->author_id = $author_id;
   }
 
+  public function setDescription(string $description): void{
+    $this->description = $description;
+  }
+
   public function getComments(): array
   {
     return $this->comments;
