@@ -16,9 +16,15 @@ class PostByTitleRoute
     $posts = [];
 
     foreach ($response as $post) {
-      $posts[] = [
-        new Post($post['id'], $post['title'], $post['content'], $post['author_id'], $post['created_at'])
-      ];
+      $post = new Post();
+      $post->setId($post['id']);
+      $post->setTitle($post['title']);
+      $post->setContent($post['content']);
+      $post->setAuthorId($post['author_id']);
+      $post->setDescription($post['description']);
+      $posts[] = $post;
     }
+
+    return $posts;
   }
 }
