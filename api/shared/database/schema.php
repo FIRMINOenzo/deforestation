@@ -13,6 +13,7 @@ function populateMapTables()
     content TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     author_id INT,
+    image_path VARCHAR(255),
     FOREIGN KEY (author_id) REFERENCES authors (id)
   );";
 
