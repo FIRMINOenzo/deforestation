@@ -33,8 +33,6 @@ class Home {
 
         for (const el of this.menus.dropDownMenuItes) {
             Events.setEvents("click", el, () => {
-                console.log(el.innerHTML);
-
                 Language.setLanguage(
                     this,
                     lang[el.innerHTML.toLowerCase()] ?? lang.pt
@@ -42,34 +40,6 @@ class Home {
             });
         }
     }
-
-    // #getLanguage() {
-    //     const langToUse = lang[navigator.language.slice(0, 2)];
-
-    //     return langToUse;
-    // }
-
-    // #setLanguage(language) {
-    //     const lang = language ?? this.#getLanguage();
-
-    //     for (const key in lang.text) {
-    //         if (key in lang.text) {
-    //             this.text[key].innerHTML = lang.text[key];
-    //         }
-    //     }
-
-    //     for (const key in lang.inputs) {
-    //         if (key in lang.inputs) {
-    //             this.inputs[key].placeholder = lang.inputs[key];
-    //         }
-    //     }
-
-    //     for (const key in lang.menus) {
-    //         if (key in this.#menus) {
-    //             this.#menus[key].innerHTML = lang.menus[key];
-    //         }
-    //     }
-    // }
 
     get text() {
         return this.#text;
