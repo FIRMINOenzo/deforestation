@@ -19,13 +19,13 @@ class PostCreateRoutes
     $postAuthorId = $_POST['author_id'] ?? 1;
     $postImage = $_FILES['image'] ?? '';
 
-    $savedIamgePath = '';
+    $savedImagePath = '';
 
     if ($postImage != '') {
       $publicPath = __DIR__ . "/../../public/";
-      $savedIamgePath = ImageService::uploadImage($postImage, $publicPath);
-      echo json_encode(['path' => $savedIamgePath]);
-      return;
+      $savedImagePath = ImageService::uploadImage($postImage, $publicPath);
+      $rootPath = realpath($_SERVER['DOCUMENT_ROOT']) . "\\deforestation\\";
+      $savedImagePath = str_replace($rootPath, '', $savedImagePath);
     }
 
     $post = new Post();
@@ -33,11 +33,11 @@ class PostCreateRoutes
     $post->setContent($postContent);
     $post->setDescription($postDescription);
     $post->setAuthorId($postAuthorId);
-    $post->setImagePath($savedIamgePath);
+    $post->setImagePath($savedImagePath);
 
-    $post = $this->postService->createPost($post);
+    $savedPost = $this->postService->createPost($post);
 
-    echo json_encode($post);
+    echo json_encode($savedPost);
   }
 }
 
