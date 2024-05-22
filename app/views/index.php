@@ -1,5 +1,8 @@
 <?php
     include_once "../components/Navbar.php";
+    include_once "../components/Footer.php";
+    include_once "../components/Hero.php";
+    include_once "../components/Post/PostCard.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,23 +14,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
     <link rel="stylesheet" href="./css/home.css" />
 </head>
-
 <body>
-   <?php
-    echo Navbar();
-   ?>
-    <div class="hero">
-        <div class="container">
-            <div class="hero-text">
-                <h1>Bem-vindo ao Meu Blog</h1>
-                <p>Explore nossos artigos e inspire-se!</p>
-                <a href="#" class="btn btn-primary">Ver mais</a>
-            </div>
-        </div>
-    </div>
-    <?php 
-        echo Navbar();
-    ?>
+   <?=Navbar()?>
+   <?=Hero()?>
     <div class="mt-5 container px-5">
         <div class="">
             <h2>Últimas Postagens</h2>
@@ -39,28 +28,14 @@
 
                 for ($i = 0; $i < count($posts); $i++) {
                     $post = $posts[$i];
-                ?>
-                    <div class="card mb-3">
-                        <img src="https://via.placeholder.com/800x400" class="card-img-top" alt="..." />
-                        <div class="card-body">
-                            <h5 class="card-title"><?= $post->getTitle() ?></h5>
-                            <p class="card-text">
-                                Breve descrição da postagem.
-                            </p>
-                            <a href="#" class="btn btn-primary">Leia mais</a>
-                        </div>
-                    </div>
-                <?php } ?>
+
+                    echo PostCard($post->getId(), $post->getTitle(), $post->getDescription() );
+                 } ?>
             </div>
         </div>
     </div>
-    <?php
-        echo Footer();
-    ?>
+    <?=Footer()?>
 </body>
-
 <?php include_once "./../utils/AddScripts.php"; ?>
-
 <script type="module" src="js/home.js"></script>
-
 </html>

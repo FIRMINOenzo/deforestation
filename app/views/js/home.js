@@ -1,23 +1,12 @@
 import { lang } from "../../constants/lang.js";
+import { Page } from "./page.js";
 import { Events } from "../../utils/Event.js";
 import { Language } from "../../utils/Language.js";
 
-class Home {
-    #text = {
-        title: document.querySelector("#title"),
-        home: document.querySelector("#home-link"),
-        about: document.querySelector("#about-link"),
-        authors: document.querySelector("#authors-link"),
-        footerCopy: document.querySelector("#footer-copy"),
-    };
-    #menus = {
-        dropDownMenu: document.querySelector("#dropDown"),
-        dropDownTitle: document.querySelector("#dropdownMenuLink"),
-        dropDownMenuItes: document.querySelectorAll(".dropdown-item"),
-    };
-    #inputs = {
-        searchInput: document.querySelector("#search"),
-    };
+class Home extends Page {
+    constructor(text, menus, inputs) {
+        super(text, menus, inputs);
+    }
 
     async init() {
         Object.keys(lang).map((v) => {
@@ -35,25 +24,35 @@ class Home {
             Events.setEvents("click", el, () => {
                 Language.setLanguage(
                     this,
-                    lang[el.innerHTML.toLowerCase()] ?? lang.pt
+                    lang[el.innerHTML.toLowerCase()].home ?? lang.pt.home
                 );
             });
         }
     }
-
-    get text() {
-        return this.#text;
-    }
-
-    get inputs() {
-        return this.#inputs;
-    }
-
-    get menus() {
-        return this.#menus;
-    }
 }
 
-const home = new Home();
+const homeAttributes = {
+    text: {
+        title: document.querySelector("#title"),
+        home: document.querySelector("#home-link"),
+        about: document.querySelector("#about-link"),
+        authors: document.querySelector("#authors-link"),
+        footerCopy: document.querySelector("#footer-copy"),
+    },
+    menus: {
+        dropDownMenu: document.querySelector("#dropDown"),
+        dropDownTitle: document.querySelector("#dropdownMenuLink"),
+        dropDownMenuItes: document.querySelectorAll(".dropdown-item"),
+    },
+    inputs: {
+        searchInput: document.querySelector("#search"),
+    },
+};
+
+const home = new Home(
+    homeAttributes.text,
+    homeAttributes.menus,
+    homeAttributes.inputs
+);
 
 home.init();

@@ -8,4 +8,4 @@
 <script type="module" src="../constants/pt.js"></script>
 <script type="module" src="../utils/Event.js"></script>
 <script type="module" src="../utils/Language.js"></script>
-<script type="module" src="../utils/LocalStorage.js"></script>
+<script type="module" src="js/page.js"></script>
