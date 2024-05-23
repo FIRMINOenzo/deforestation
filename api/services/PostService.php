@@ -36,7 +36,7 @@ class PostService
     $stmt->execute();
 
     $result = $stmt->get_result();
-    $post = $result->fetch_object('Post');
+    $post = $result->fetch_object(Post::class);
 
     if (!$post) {
       return null;

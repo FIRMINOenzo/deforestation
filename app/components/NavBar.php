@@ -20,9 +20,6 @@ function Navbar() {
                         <a class='nav-link' id='home-link' href='#'>Home <span class='sr-only'>(current)</span></a>
                     </li>
                     <li class='nav-item'>
-                        <a class='nav-link' id='about-link' href='#'>Sobre</a>
-                    </li>
-                    <li class='nav-item'>
                         <a class='nav-link' href='#' id='authors-link'>Autores</a>
                     </li>
                     <li class='nav-item'>

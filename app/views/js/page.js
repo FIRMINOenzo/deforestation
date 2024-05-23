@@ -2,11 +2,13 @@ export class Page {
     #text;
     #menus;
     #inputs;
+    #buttons;
 
-    constructor(text, menus, inputs) {
+    constructor(text, menus, inputs, buttons) {
         this.#text = text;
         this.#menus = menus;
         this.#inputs = inputs;
+        this.#buttons = buttons;
     }
 
     init() {}
@@ -21,5 +23,9 @@ export class Page {
 
     get menus() {
         return this.#menus;
+    }
+
+    get buttons() {
+        return this.#buttons;
     }
 }

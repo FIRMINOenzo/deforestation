@@ -4,7 +4,7 @@ import { Events } from "../../utils/Event.js";
 import { Language } from "../../utils/Language.js";
 
 class Home extends Page {
-    constructor(text, menus, inputs) {
+    constructor({ text, menus, inputs, buttons }) {
         super(text, menus, inputs);
     }
 
@@ -35,7 +35,6 @@ const homeAttributes = {
     text: {
         title: document.querySelector("#title"),
         home: document.querySelector("#home-link"),
-        about: document.querySelector("#about-link"),
         authors: document.querySelector("#authors-link"),
         footerCopy: document.querySelector("#footer-copy"),
     },
@@ -47,12 +46,10 @@ const homeAttributes = {
     inputs: {
         searchInput: document.querySelector("#search"),
     },
+
+    buttons: {},
 };
 
-const home = new Home(
-    homeAttributes.text,
-    homeAttributes.menus,
-    homeAttributes.inputs
-);
+const home = new Home(homeAttributes);
 
 home.init();

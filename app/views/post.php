@@ -4,6 +4,7 @@
     include_once "../components/Post/PostBody.php"; 
     include_once "../components/Comments/Comment.php"; 
     include_once "../components/Comments/CommentForm.php"; 
+    // include_once __DIR__ . "/../../api/v1/post/id.php";    
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -19,7 +20,7 @@
     <?=Navbar()?>
     <div class="container mt-5">
         <div class="row">
-            <?=PostBody("Titulo", "apsdpasodpoaspdooapsodpaosdo")?>
+            <!-- <?=PostBody("Titulp", "apsdpasodpoaspdooapsodpaosdo")?> -->
         </div>
     </div>
         <div class="card-body">
@@ -35,5 +36,17 @@
     </div>
     <?=Footer()?>
 </body>
-<?php include_once "./../utils/AddScripts.php"; ?>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script type="module" src="../constants/index.js"></script>
+<script type="module" src="../constants/lang.js"></script>
+<script type="module" src="../constants/en.js"></script>
+<script type="module" src="../constants/es.js"></script>
+<script type="module" src="../constants/pt.js"></script>
+<script type="module" src="../utils/Event.js"></script>
+<script type="module" src="../utils/LocalStorage.js"></script>
+<script type="module" src="../utils/Language.js"></script>
+<script type="module" src="js/page.js"></script>
+<script type="module" src="js/post.js"></script>
 </html>

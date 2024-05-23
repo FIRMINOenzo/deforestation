@@ -1,4 +1,4 @@
-<?php
+E<?php
 
 class PostByIdRoutes
 {
@@ -9,7 +9,7 @@ class PostByIdRoutes
     $this->postService = $postService;
   }
 
-  public function byId(): void
+  public function byId()
   {
     $id = $_GET["id"] ?? null;
 
@@ -19,9 +19,7 @@ class PostByIdRoutes
       return;
     }
 
-    $post = $this->postService->getPost($id);
-
-    echo json_encode($post);
+    return $this->postService->getPost($id);
   }
 }
 
@@ -34,4 +32,4 @@ $conn = connectDatabase();
 $postService = new PostService($conn);
 $postByIdRoutes = new PostByIdRoutes($postService);
 
-$postByIdRoutes->byId();
+$post = $postByIdRoutes->byId();

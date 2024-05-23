@@ -15,6 +15,12 @@ export class Language {
             }
         }
 
+        for (const key in lang.buttons) {
+            if (key in param.buttons) {
+                param.buttons[key].innerHTML = lang.buttons[key];
+            }
+        }
+
         for (const key in lang.inputs) {
             if (key in param.inputs) {
                 param.inputs[key].placeholder = lang.inputs[key];
