@@ -29,7 +29,7 @@
                 for ($i = 0; $i < count($posts); $i++) {
                     $post = $posts[$i];
 
-                    echo PostCard($post->getId(), $post->getTitle(), $post->getDescription() );
+                    echo PostCard($post->getId(), $post->getTitle(), $post->getDescription(), $post->getImagePath());
                  } ?>
             </div>
         </div>

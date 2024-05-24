@@ -95,6 +95,7 @@ class PostService
 
       $postsList = [];
 
+
       for ($i = 0; $i < count($data); $i++) {
         $post = new Post();
         $post->setId($data[$i]['id']);
@@ -102,7 +103,7 @@ class PostService
         $post->setDescription($data[$i]["description"] ?? '');
         $post->setContent($data[$i]['content'] ?? '');
         $post->setAuthorId($data[$i]['author_id']);
-        $post->setImagePath($postsInfo[$i]['image_path'] ?? '');
+        $post->setImagePath($data[$i]['image_path'] ?? '');
         $postsList[$i] = $post;
       }
 

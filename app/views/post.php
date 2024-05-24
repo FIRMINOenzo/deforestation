@@ -28,7 +28,7 @@
     <?=Navbar()?>
     <div class="container mt-5">
         <div class="row">
-            <?=PostBody($post->getTitle(), $post->getContent())?>
+            <?=PostBody($post->getTitle(), $post->getContent(), $post->getImagePath())?>
         </div>
     </div>
         <div class="card-body">
