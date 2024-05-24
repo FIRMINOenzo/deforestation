@@ -30,6 +30,4 @@ require_once __DIR__ . "/../../services/PostService.php";
 
 $conn = connectDatabase();
 $postService = new PostService($conn);
-$postByIdRoutes = new PostByIdRoutes($postService);
 
-$post = $postByIdRoutes->byId();

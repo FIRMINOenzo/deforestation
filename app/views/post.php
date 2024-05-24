@@ -1,10 +1,19 @@
+
 <?php
+
     include_once "../components/Navbar.php";
     include_once "../components/Footer.php";
     include_once "../components/Post/PostBody.php"; 
     include_once "../components/Comments/Comment.php"; 
     include_once "../components/Comments/CommentForm.php"; 
-    // include_once __DIR__ . "/../../api/v1/post/id.php";    
+    include_once __DIR__ . "/../../api/models/Comment.php";    
+    include_once __DIR__ . "/../../api/models/Post.php";    
+    include_once __DIR__ . "/../../api/v1/post/id.php"; 
+    
+    
+     $id = $_GET["id"] ?? null;
+
+     $post = $postService->getPost($id)
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -20,7 +29,7 @@
     <?=Navbar()?>
     <div class="container mt-5">
         <div class="row">
-            <!-- <?=PostBody("Titulp", "apsdpasodpoaspdooapsodpaosdo")?> -->
+            <?=PostBody($post->getTitle(), $post->getContent())?>
         </div>
     </div>
         <div class="card-body">
