@@ -58,7 +58,8 @@ class PostService
 
       // get comments for post
       $stmt = $this->conn->prepare("SELECT * FROM comments WHERE post_id = ?");
-      $stmt->bind_param("i", $post->getId());
+      $id = $post->getId();
+      $stmt->bind_param("i", $id);
       $stmt->execute();
 
       $result = $stmt->get_result();
