@@ -1,6 +1,5 @@
 
 <?php
-
     include_once "../components/Navbar.php";
     include_once "../components/Footer.php";
     include_once "../components/Post/PostBody.php"; 
