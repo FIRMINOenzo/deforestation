@@ -1,37 +1,88 @@
+const defaults = {
+    text: {
+        title: "Deforestation",
+        home: "Home",
+        authors: "Autores",
+        footerCopy: "&copy; 2024 Deforestation. Todos os direitos reservados.",       
+    },
+    menus: {
+        dropDownTitle: "Linguagem",
+    },
+    inputs: {
+        searchInput: "Buscar",
+    },
+    buttons: {}
+}
+
 export const pt = {
     home: {
         text: {
-            title: "Deforestation",
-            home: "Home",
-            authors: "Autores",
-            footerCopy: "&copy; 2024 Meu Blog. Todos os direitos reservados.",
+            ...defaults.text,
+            heroHeader: "Bem-vindo ao nosso blog, aqui você pode ler e escrever posts sobre desmatamento",
+            heroText: "Explore nossos artigos",
+            heroButtonText: "Ver mais",
+            lastPosts: "Últimas Postagens", 
+            writePost: "Escrever um post",
+            postCard: "Ler mais"
         },
         menus: {
-            dropDownTitle: "Linguagem",
+            ...defaults.menus,
         },
         inputs: {
-            searchInput: "Buscar",
+            ...defaults.inputs,
         },
     },
     post: {
         text: {
-            title: "Deforestation",
-            home: "Home",
-            authors: "Autores",
-            footerCopy: "&copy; 2024 Meu Blog. Todos os direitos reservados.",
+            ...defaults.text,
             commentSection: "Comentários",
             commentHeader: "Adicionar comentário",
             comentNameField: "Nome",
             comentCommentField: "Comentário",
         },
         menus: {
-            dropDownTitle: "Linguagem",
+            ...defaults.menus,
         },
         inputs: {
-            searchInput: "Buscar",
+            ...defaults.inputs,
         },
         buttons: {
             comment: "Enviar Comentário",
         },
     },
+    create: {
+        text: {
+            ...defaults.text,
+            footerCopy: undefined,
+            header: "Criar Post",
+            image: "Imagem",
+            title: "Titulo",
+            content: "Conteúdo",
+        },
+        menus: {
+            ...defaults.menus,
+        },
+        inputs: {
+            ...defaults.inputs,
+        },
+        buttons: {
+            ...defaults.buttons,
+        },
+    },
+    authors: {
+        text: {
+            ...defaults.text,
+            footerCopy: undefined,
+            authorsHeader: "Sobre os autores",
+        },
+        menus: {
+            ...defaults.menus,
+        },
+        inputs: {
+            ...defaults.inputs,
+        },
+        buttons: {
+            ...defaults.buttons,
+        },
+    }
 };

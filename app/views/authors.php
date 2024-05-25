@@ -13,43 +13,42 @@
     <title>Deforestation</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
-    <link rel="stylesheet" href="./css/home.css" />
+    <link rel="stylesheet" href="./css/index.css" />
 </head>
 <body >
     <?=Navbar()?>
     <div class="container mt-5 px-5">
         <section id="about-authors" class="mb-5">
-            <h2>Sobre os Autores</h2>
+            <h2 id="authors-header">Sobre os Autores</h2>
             <div class="row">
                 <div class="col-md-4 text-center">
                     <i class="fab fa-github fa-5x mb-3"></i>
-                    <h5>Autor 1</h5>
-                    <p>Breve descrição do autor 1. Especialista em conservação ambiental e sustentabilidade.</p>
+                    <h5>Enzo Firmino Campanari</h5>
+                    <p>ADS - Fatec Bragança Paulista.</p>
                     <a href="https://github.com/PedroCavallaro" target="_blank">
                         <i class="fab fa-github"></i> GitHub
                     </a>
                 </div>
                 <div class="col-md-4 text-center">
                     <i class="fab fa-github fa-5x mb-3"></i>
-                    <h5>Autor 2</h5>
-                    <p>Breve descrição do autor 2. Pesquisador em mudanças climáticas e políticas ambientais.</p>
+                    <h5>Pedro Leme Cavallaro</h5>
+                    <p>ADS - Fatec Bragança Paulista.</p>
                     <a href="https://github.com/FIRMINOenzo" target="_blank">
                         <i class="fab fa-github"></i> GitHub
                     </a>
                 </div>
                 <div class="col-md-4 text-center">
                     <i class="fab fa-github fa-5x mb-3"></i>
-                    <h5>Autor 3</h5>
-                    <p>Breve descrição do autor 3. Jornalista especializado em reportagens sobre desmatamento.</p>
-                    <a href="https://github.com/autor3" target="_blank">
+                    <h5>Pedro Henrique Alves Mossini</h5>
+                    <p>ADS - Fatec Bragança Paulista.</p>
+                    <a href="#">
                         <i class="fab fa-github"></i> GitHub
                     </a>
                 </div>
             </div>
         </section>
     </div>
-    <?=AuthModal()?>
 </body>
 <?php include_once "./../utils/AddScripts.php"; ?>
-<script type="module" src="js/home.js"></script>
+<script type="module" src="js/authors.js"></script>
 </html>

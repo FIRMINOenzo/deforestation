@@ -8,7 +8,7 @@ function PostCard( int $id, string $title, string $description, string $imageUrl
                     <p class='card-text'>
                         ".$description."
                     </p>
-                    <a href='post.php?id=".$id."' class='btn btn-primary'>Leia mais</a>
+                    <a href='post.php?id=".$id."' class='btn btn-success post-button' >Leia mais</a>
                 </div>
             </div>";
 }

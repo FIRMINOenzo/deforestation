@@ -1,5 +1,5 @@
 export class LocalStorage {
-    static save(key, payload) {
+    static set(key, payload) {
         localStorage.setItem(key, JSON.stringify(payload));
     }
 

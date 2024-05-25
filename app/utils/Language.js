@@ -1,4 +1,5 @@
 import { lang } from "../constants/lang.js";
+import { LocalStorage } from "./LocalStorage.js";
 
 export class Language {
     static getLanguage() {
@@ -6,7 +7,7 @@ export class Language {
         return langToUse;
     }
 
-    static setLanguage(param, language) {
+    static setLanguage(param, language, id) {
         const lang = language ?? Language.getLanguage();
 
         for (const key in lang.text) {
@@ -32,5 +33,8 @@ export class Language {
                 param.menus[key].innerHTML = lang.menus[key];
             }
         }
+
+
+        LocalStorage.set("lang", id)
     }
 }

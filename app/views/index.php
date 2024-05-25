@@ -13,14 +13,18 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
     <link rel="stylesheet" href="./css/home.css" />
+    <link rel="stylesheet" href="./css/index.css" />
 </head>
 <body>
    <?=Navbar()?>
    <?=Hero()?>
     <div class="mt-5 container px-5">
-        <div class="">
-            <h2>Últimas Postagens</h2>
-            <div class="">
+        <div id="posts-container">
+            <div>
+                <h2 id="last-posts">Últimas Postagens</h2>
+                <a id='write-post-anchor' class="btn btn-success" href="./create.php">Escrever um post</a>
+            </div>
+            <div id='posts'>
                 <?php
                 include_once __DIR__ . "/../../api/v1/post/all.php";
 

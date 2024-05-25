@@ -11,7 +11,7 @@ function CommentForm() {
                     <label for='commentText'>Comentário</label>
                     <textarea class='form-control' id='commentText' rows='3' required></textarea>
                 </div>
-                <button type='button' id='submitComment'  class='btn btn-primary'>Enviar Comentário</button>
+                <button type='button' id='submitComment'  class='btn btn-success'>Enviar Comentário</button>
             </form>";
 }
 

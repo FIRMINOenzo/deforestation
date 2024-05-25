@@ -24,7 +24,7 @@ function Navbar() {
                     </li>
                     <li class='nav-item'>
                         <div class='dropdown'>
-                            <a class='nav-link dropdown-toggle' href='#' role='button' id='dropdownMenuLink' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                            <a class='nav-link dropdown-toggle'  role='button' id='dropdownMenuLink' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
                                 Linguagem
                             </a>
                             <div class='dropdown-menu' id='dropDown' aria-labelledby='dropdownMenuLink'>

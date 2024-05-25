@@ -1,16 +1,12 @@
 <?php
 
 function AuthModal() {
-    return "<div class='modal fade' id='contactModal'>
-        <div class='modal-dialog'>
-            <div class='modal-content'>
-            
-                <!-- Modal Header -->
-                <div class='modal-header'>
-                    <h4 class='modal-title'>Inscreva-se para Atualizações</h4>
-                    <button type='button' class='close' data-dismiss='modal'>&times;</button>
+    return "<div  id='auth-modal-container'>
+        <div id='auth-modal'>
+            <div >
+                <div >
+                    <h4>Você precisa ter uma conta para realizar essa ação</h4>
                 </div>
-                
                 <!-- Modal Body -->
                 <div class='modal-body'>
                     <form id='contactForm'>
@@ -22,14 +18,13 @@ function AuthModal() {
                             <label for='email'>Email:</label>
                             <input type='email' class='form-control' id='email' placeholder='Digite seu email' required>
                         </div>
-                        <button type='submit' class='btn btn-primary'>Enviar</button>
+                        <div id='auth-modal-buttons'>
+                            <button type='submit' class='btn  btn-success'>Enviar</button>
+                            <button type='button' class='btn btn-danger' id='close-auth-modal'>Fechar</button>
+                        </div>
                     </form>
                 </div>
-                
-                <!-- Modal Footer -->
-                <div class='modal-footer'>
-                    <button type='button' class='btn btn-danger' data-dismiss='modal'>Fechar</button>
-                </div>
+               
                 
             </div>
         </div>

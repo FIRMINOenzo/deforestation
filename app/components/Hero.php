@@ -2,12 +2,12 @@
 
 function  Hero() {
     return "
-     <div class='hero'>
-        <div class='container'>
-            <div class='hero-text'>
+     <div class='hero' id='hero'>
+        <div class='container' >
+            <div id='hero-text' class='hero-text'>
                 <h1>Bem-vindo ao Meu Blog</h1>
                 <p>Explore nossos artigos e inspire-se!</p>
-                <a href='#' class='btn btn-primary'>Ver mais</a>
+                <button id='hero-button'  class='btn btn-success'>Ver mais</button>
             </div>
         </div>
     </div>

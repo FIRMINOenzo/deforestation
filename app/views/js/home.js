@@ -2,54 +2,56 @@ import { lang } from "../../constants/lang.js";
 import { Page } from "./page.js";
 import { Events } from "../../utils/Event.js";
 import { Language } from "../../utils/Language.js";
+import { LocalStorage } from "../../utils/LocalStorage.js";
+
 
 class Home extends Page {
-    constructor({ text, menus, inputs, buttons }) {
-        super(text, menus, inputs);
+    constructor(page, { text, menus, inputs, buttons }) {
+        super(page, text, menus, inputs, buttons);
     }
 
+    scrollToPosts() {
+        const postContainer = document.querySelector("#posts-container")
+
+        postContainer.scrollIntoView({
+            behavior: "smooth"
+        })
+
+    }
+    changePostsButtonText() {
+        const posts = [...document.querySelectorAll(".post-button")] ?? []
+  
+        const curr = LocalStorage.get("lang")
+
+        posts.forEach((e) => {
+           e.innerHTML = lang[curr].home.text.postCard
+        })
+    }
+
+
     async init() {
-        Object.keys(lang).map((v) => {
-            this.menus.dropDownMenu.innerHTML += `
-            <a class="dropdown-item" href="#">${
-                v[0].toUpperCase() + v.slice(1)
-            }</a>`;
-        });
+        this.useLastLanguage(this.page)
+        this.changeLanguage(this.page, this.changePostsButtonText)
+     
+    
+        const heroButton = document.querySelector("#hero-button")   
 
-        this.menus.dropDownMenuItes = [
-            ...document.querySelectorAll(".dropdown-item"),
-        ];
+        Events.setEvents("click", heroButton, this.scrollToPosts)
 
-        for (const el of this.menus.dropDownMenuItes) {
-            Events.setEvents("click", el, () => {
-                Language.setLanguage(
-                    this,
-                    lang[el.innerHTML.toLowerCase()].home ?? lang.pt.home
-                );
-            });
-        }
     }
 }
 
 const homeAttributes = {
     text: {
-        title: document.querySelector("#title"),
-        home: document.querySelector("#home-link"),
+        lastPosts: document.querySelector("#last-posts"),
+        writePost:  document.querySelector("#write-post-anchor"),
         authors: document.querySelector("#authors-link"),
-        footerCopy: document.querySelector("#footer-copy"),
+        heroHeader:  document.querySelector("#hero-text > h1"),
+        heroText :  document.querySelector("#hero-text > p "),
+        heroButtonText:  document.querySelector("#hero-button"),
     },
-    menus: {
-        dropDownMenu: document.querySelector("#dropDown"),
-        dropDownTitle: document.querySelector("#dropdownMenuLink"),
-        dropDownMenuItes: document.querySelectorAll(".dropdown-item"),
-    },
-    inputs: {
-        searchInput: document.querySelector("#search"),
-    },
-
-    buttons: {},
 };
 
-const home = new Home(homeAttributes);
+const home = new Home("home", homeAttributes);
 
 home.init();
