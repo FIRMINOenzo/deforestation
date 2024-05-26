@@ -34,7 +34,6 @@ class Home extends Page {
         this.useLastLanguage(this.page)
         this.changeLanguage(this.page, this.changePostsButtonText)
      
-    
         const heroButton = document.querySelector("#hero-button")   
 
         Events.setEvents("click", heroButton, this.scrollToPosts)
