@@ -9,6 +9,7 @@ class Authors extends Page {
     init() {
         this.useLastLanguage(this.page)
         this.changeLanguage(this.page)
+
     }
 }
 const authorsAttributes = {

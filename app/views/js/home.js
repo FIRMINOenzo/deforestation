@@ -28,7 +28,6 @@ class Home extends Page {
         })
     }
 
-
     async init() {
         this.changePostsButtonText()
         this.useLastLanguage(this.page)
