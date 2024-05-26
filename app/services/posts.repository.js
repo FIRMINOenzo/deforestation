@@ -1,5 +1,5 @@
 export class PostsRepository {
-    async createPost(post, userId) {
+    async createComment(post, userId) {
         try {
             const posts = await fetch(`http://localhost:80/api/posts/${id}`, {
                 method: "POST",
