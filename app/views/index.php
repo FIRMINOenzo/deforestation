@@ -1,11 +1,12 @@
 <?php
-    include_once "../components/Navbar.php";
-    include_once "../components/Footer.php";
-    include_once "../components/Hero.php";
-    include_once "../components/Post/PostCard.php";
+include_once "../components/Navbar.php";
+include_once "../components/Footer.php";
+include_once "../components/Hero.php";
+include_once "../components/Post/PostCard.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,9 +16,10 @@
     <link rel="stylesheet" href="./css/home.css" />
     <link rel="stylesheet" href="./css/index.css" />
 </head>
+
 <body>
-   <?=Navbar()?>
-   <?=Hero()?>
+    <?= Navbar() ?>
+    <?= Hero() ?>
     <div class="mt-5 container px-5">
         <div id="posts-container">
             <div>
@@ -34,12 +36,13 @@
                     $post = $posts[$i];
 
                     echo PostCard($post->getId(), $post->getTitle(), $post->getDescription(), $post->getImagePath());
-                 } ?>
+                } ?>
             </div>
         </div>
     </div>
-    <?=Footer()?>
+    <?= Footer() ?>
 </body>
 <?php include_once "./../utils/AddScripts.php"; ?>
 <script type="module" src="js/home.js"></script>
+
 </html>

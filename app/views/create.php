@@ -1,5 +1,5 @@
 <?php
-  include_once "../components/Navbar.php";
+include_once "../components/Navbar.php";
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +15,7 @@
 </head>
 
 <body>
-  <?=Navbar()?>
+  <?= Navbar() ?>
   <div class="container" id='write-container'>
     <h1 id="create-post-header">Create Post</h1>
     <form action="./../../api/v1/post/create.php" method="POST" enctype="multipart/form-data">
@@ -38,4 +38,5 @@
 
 <?php include_once "./../utils/AddScripts.php"; ?>
 <script type="module" src="js/create.js"></script>
+
 </html>

@@ -1,11 +1,12 @@
 <?php
-    include_once "../components/Navbar.php";
-    include_once "../components/Footer.php";
-    include_once "../components/Hero.php";
-    include_once "../components/Post/PostCard.php";
+include_once "../components/Navbar.php";
+include_once "../components/Footer.php";
+include_once "../components/Hero.php";
+include_once "../components/Post/PostCard.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,9 +15,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
     <link rel="stylesheet" href="./css/home.css" />
 </head>
+
 <body>
-   <?=Navbar()?>
-   <?=Hero()?>
+    <?= Navbar() ?>
+    <?= Hero() ?>
     <div class="mt-5 container px-5">
         <div class="">
             <h2>Últimas Postagens</h2>
@@ -30,12 +32,13 @@
                     $post = $posts[$i];
 
                     echo PostCard($post->getId(), $post->getTitle(), $post->getDescription(), $post->getImagePath());
-                 } ?>
+                } ?>
             </div>
         </div>
     </div>
-    <?=Footer()?>
+    <?= Footer() ?>
 </body>
 <?php include_once "./../utils/AddScripts.php"; ?>
 <script type="module" src="js/home.js"></script>
+
 </html>
