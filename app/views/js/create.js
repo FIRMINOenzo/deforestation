@@ -14,24 +14,12 @@ class CreatePost extends Page {
 
 const createPostAttributes = {
     text: {
-        title: document.querySelector("#title"),
-        home: document.querySelector("#home-link"),
-        authors: document.querySelector("#authors-link"),
         header: document.querySelector("#create-post-header"),
         image: document.querySelector('label[for="image"]'),
         title: document.querySelector('label[for="title"]'),
-        content: document.querySelector('label[for="content"]')
+        content: document.querySelector('label[for="content"]'),
+        createPostButton: document.querySelector("#create-post-button")
     },
-    menus: {
-        dropDownMenu: document.querySelector("#dropDown"),
-        dropDownTitle: document.querySelector("#dropdownMenuLink"),
-        dropDownMenuItes: document.querySelectorAll(".dropdown-item"),
-    },
-    inputs: {
-        searchInput: document.querySelector("#search"),
-    },
-
-    buttons: {},
 };
 
 const createPost = new CreatePost("create",createPostAttributes);

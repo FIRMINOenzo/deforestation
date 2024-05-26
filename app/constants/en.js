@@ -56,6 +56,7 @@ export const en = {
             image: "Image",
             title: "Title",
             content: "Content",
+            createPostButton: "Create"
         },
         menus: {
             ...defaults.menus,

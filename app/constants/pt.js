@@ -58,6 +58,7 @@ export const pt = {
             image: "Imagem",
             title: "Titulo",
             content: "Conteúdo",
+            createPostButton: "Criar"
         },
         menus: {
             ...defaults.menus,

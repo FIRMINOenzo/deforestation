@@ -31,7 +31,7 @@
         <label for="image">Image</label>
         <input type="file" name="image" id="image" class="form-control-file" required>
       </div>
-      <button type="submit" class="btn btn-success">Create</button>
+      <button type="submit" class="btn btn-success" id="create-post-button">Criar</button>
     </form>
   </div>
 </body>
