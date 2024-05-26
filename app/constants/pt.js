@@ -22,7 +22,7 @@ export const pt = {
             heroText: "Explore nossos artigos",
             heroButtonText: "Ver mais",
             lastPosts: "Últimas Postagens", 
-            writePost: "Escrever um post",
+            writePost: "Escrever post",
             postCard: "Ler mais"
         },
         menus: {

@@ -21,7 +21,7 @@ export const en = {
             heroText: "Explore our articles",
             heroButtonText: "See more",
             lastPosts: "Last Posts", 
-            writePost: "write a post",
+            writePost: "write post",
             postCard: "Read more"
         },
         menus: {
