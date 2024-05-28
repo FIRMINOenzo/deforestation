@@ -3,8 +3,7 @@ import { LocalStorage } from "./LocalStorage.js";
 
 export class Language {
     static getLanguage() {
-        const langToUse = lang[navigator.language.slice(0, 2)];
-        return langToUse;
+        return navigator.language.slice(0, 2);
     }
 
     static setLanguage(param, language, id) {
@@ -34,7 +33,6 @@ export class Language {
             }
         }
 
-
-        LocalStorage.set("lang", id)
+        LocalStorage.set("lang", id);
     }
 }

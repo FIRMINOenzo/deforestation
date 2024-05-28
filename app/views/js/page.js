@@ -3,10 +3,8 @@ import { lang } from "../../constants/lang.js";
 import { Events } from "../../utils/Event.js";
 import { Language } from "../../utils/Language.js";
 
-
-
 export class Page {
-    page
+    page;
     #text = {
         title: document.querySelector("#title"),
         home: document.querySelector("#home-link"),
@@ -19,35 +17,42 @@ export class Page {
         dropDownMenuItems: document.querySelectorAll(".dropdown-item"),
     };
     #inputs = {
-        searchInput: document.querySelector("#search")
+        searchInput: document.querySelector("#search"),
     };
     #buttons = {};
 
     constructor(page, text, menus, inputs, buttons) {
-        this.page = page
-        this.#text = {...this.text, ...text};
-        this.#menus = {...this.menus, ...menus};
-        this.#inputs = {...this.inputs, ...inputs};
-        this.#buttons = {...this.buttons, ...buttons};
+        this.page = page;
+        this.#text = { ...this.text, ...text };
+        this.#menus = { ...this.menus, ...menus };
+        this.#inputs = { ...this.inputs, ...inputs };
+        this.#buttons = { ...this.buttons, ...buttons };
     }
 
     init() {}
 
     useLastLanguage(page) {
-        const lasUsedLang = LocalStorage.get("lang") 
+        const lasUsedLang = LocalStorage.get("lang");
 
-
-        if(lasUsedLang)  {
+        if (lasUsedLang) {
             Language.setLanguage(
                 this,
                 lang[lasUsedLang][page] ?? lang.pt[page],
                 lasUsedLang
             );
-        
-            return
+
+            return;
         }
 
-         LocalStorage.set("lang", "pt") 
+        // const browserLang = Language.getLanguage();
+
+        // Language.setLanguage(
+        //     this,
+        //     lang[browserLang][page] ?? lang.pt[page],
+        //     lasUsedLang
+        // );
+
+        LocalStorage.set("lang", "pt");
     }
 
     changeLanguage(page, callback) {
@@ -58,13 +63,11 @@ export class Page {
             }</a>`;
         });
 
-        
         this.menus.dropDownMenuItems = [
             ...document.querySelectorAll(".dropdown-item"),
         ];
 
         for (const el of this.menus.dropDownMenuItems) {
-            
             Events.setEvents("click", el, () => {
                 Language.setLanguage(
                     this,
@@ -72,7 +75,7 @@ export class Page {
                     el.innerHTML.toLowerCase()
                 );
 
-                callback?.()
+                callback?.();
             });
         }
     }
