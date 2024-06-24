@@ -13,6 +13,21 @@ if (!($conn instanceof mysqli)) {
 include_once __DIR__ . '/shared/database/schema.php';
 include_once __DIR__ . '/shared/database/populate.php';
 
+$stmt = $conn->prepare($createDatabase);
+$result = $stmt->execute();
+
+if (!$result) {
+  echo "Database creation failed: " . $conn->error;
+  die();
+}
+
+$result = $conn->select_db('deforestation');
+
+if (!$result) {
+  echo "Database selection failed: " . $conn->error;
+  die();
+}
+
 foreach ($createTables as $table => $create) {
   $stmt = $conn->prepare($create);
   $result = $stmt->execute();

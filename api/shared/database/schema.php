@@ -1,5 +1,6 @@
 <?php
 $createTables = [];
+$createDatabase = "CREATE DATABASE IF NOT EXISTS deforestation;";
 
 function populateMapTables()
 {
