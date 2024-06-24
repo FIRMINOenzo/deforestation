@@ -23,12 +23,9 @@ This blog is dedicated to discussing the problems deforestation is causing in ou
 <b>Step 3</b>: Start the <u>_APACHE_</u> and <u>_MySQL_</u> servers. It should look like this when both are started.
 ![XAMPP screen](.github/xampp.png)
 
-<b>Step 4</b>: In the <u>_MySQL_</u> admin panel, create a new database named 'deforestation'.
-![database creation](.github/create_db.png)
+<b>Step 4</b>: Go to http://localhost/deforestation/api/ to run all automatic database configuration.
 
-<b>Step 5</b>: Go to http://localhost/deforestation/api/ to run all automatic database configuration.
-
-<b>Step 6</b>: The blog is now available at http://localhost/deforestation/app/views/
+<b>Step 5</b>: The blog is now available at http://localhost/deforestation/app/views/
 
 ## Português
 
@@ -45,12 +42,9 @@ This blog is dedicated to discussing the problems deforestation is causing in ou
 <b>Passo 3</b>: Inicie os servidores <u>_APACHE_</u> e <u>_MySQL_</u>. Deve ficar assim quando ambos estiverem iniciados.
 ![Tela XAMPP](.github/xampp.png)
 
-<b>Passo 4</b>: No painel de administração do <u>_MySQL_</u>, crie um novo banco de dados chamado 'deforestation'.
-![criação do banco de dados](.github/create_db.png)
+<b>Passo 4</b>: Vá para http://localhost/deforestation/api/ para executar toda a configuração automática do banco de dados.
 
-<b>Passo 5</b>: Vá para http://localhost/deforestation/api/ para executar toda a configuração automática do banco de dados.
-
-<b>Passo 6</b>: O blog agora está disponível em http://localhost/deforestation/app/views/
+<b>Passo 5</b>: O blog agora está disponível em http://localhost/deforestation/app/views/
 
 ## Español
 
@@ -67,9 +61,6 @@ This blog is dedicated to discussing the problems deforestation is causing in ou
 <b>Paso 3</b>: Inicie los servidores <u>_APACHE_</u> y <u>_MySQL_</u>. Debería verse así cuando ambos estén iniciados.
 ![Pantalla XAMPP](.github/xampp.png)
 
-<b>Paso 4</b>: En el panel de administración de <u>_MySQL_</u>, cree una nueva base de datos llamada 'deforestation'.
-![creación de la base de datos](.github/create_db.png)
+<b>Paso 4</b>: Vaya a http://localhost/deforestation/api/ para ejecutar toda la configuración automática de la base de datos.
 
-<b>Paso 5</b>: Vaya a http://localhost/deforestation/api/ para ejecutar toda la configuración automática de la base de datos.
-
-<b>Paso 6</b>: El blog ya está disponible en http://localhost/deforestation/app/views/
+<b>Paso 5</b>: El blog ya está disponible en http://localhost/deforestation/app/views/

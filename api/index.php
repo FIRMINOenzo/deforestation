@@ -1,9 +1,19 @@
 <?php
+//show all erros
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 include_once __DIR__ . '/env.php';
 include_once __DIR__ . '/shared/database/database.php';
 
-$conn = connectDatabase();
+$conn;
+
+try {
+  $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, "", DB_PORT);
+} catch (Exception $e) {
+  throw new Exception("Failed connection: " . $e->getMessage());
+}
 
 if (!($conn instanceof mysqli)) {
   echo "Database failed: " . $conn;
