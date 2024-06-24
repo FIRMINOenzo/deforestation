@@ -24,7 +24,7 @@ class PostCreateRoutes
     if ($postImage != '') {
       $publicPath = __DIR__ . "/../../public/";
       $savedImagePath = ImageService::uploadImage($postImage, $publicPath);
-      $rootPath = realpath($_SERVER['DOCUMENT_ROOT']) . "\\deforestation\\";
+      $rootPath = realpath($_SERVER['DOCUMENT_ROOT']);
       $savedImagePath = str_replace($rootPath, '', $savedImagePath);
     }
 
@@ -37,7 +37,9 @@ class PostCreateRoutes
 
     $savedPost = $this->postService->createPost($post);
 
-    echo json_encode($savedPost);
+    header("Location: /deforestation/app/views/post.php?id={$savedPost->getId()}");
+
+    // echo json_encode($savedPost);
   }
 }
 

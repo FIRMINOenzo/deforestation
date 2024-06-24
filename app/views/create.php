@@ -24,6 +24,10 @@ include_once "../components/Navbar.php";
         <input type="text" name="title" id="title" class="form-control" required>
       </div>
       <div class="form-group">
+        <label for="description">Description</label>
+        <input type="text" name="description" id="description" class="form-control" required>
+      </div>
+      <div class="form-group">
         <label for="content">Content</label>
         <textarea name="content" id="content" class="form-control" required></textarea>
       </div>

@@ -15,12 +15,13 @@ class PostService
       $this->conn->begin_transaction();
 
       $title = $post->getTitle();
+      $description = $post->getDescription();
       $content = $post->getContent();
       $authorId = $post->getAuthorId();
       $imagePath = $post->getImagePath();
 
-      $stmt = $this->conn->prepare("INSERT INTO posts(title, content, author_id, image_path) VALUES (?, ?, ?, ?)");
-      $stmt->bind_param("ssis", $title, $content, $authorId, $imagePath);
+      $stmt = $this->conn->prepare("INSERT INTO posts(title, description, content, author_id, image_path) VALUES (?, ?, ?, ?, ?)");
+      $stmt->bind_param("sssis", $title, $description, $content, $authorId, $imagePath);
       $stmt->execute();
 
       $post->setId($this->conn->insert_id);
