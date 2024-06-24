@@ -60,4 +60,4 @@ foreach ($populateArray as $table => $inserts) {
   }
 }
 
-echo "Database setup successfully!";
+header('Location: /deforestation/app/views/');
