@@ -1,13 +1,10 @@
 <?php
-function Comment() {
+function Comment(string $username, string $comment)
+{
     return "<div class='d-flex flex-column'>
         <div>
-            <h6>Usuário 2</h6>
-            <span>Email@email.com</span>
+            <h6>" . $username . "</h6>
         </div>
-            <p class='mt-2'>
-                Concordo com os pontos abordados. Parabéns pelo conteúdo!
-            </p>
+            <p class='mt-2'>" . $comment . "</p>
     </div>";
 }
-?>

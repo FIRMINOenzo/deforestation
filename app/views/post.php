@@ -44,14 +44,14 @@ $post = $postService->getPost($id);
         <h5 class="card-title">Comentários</h5>
         <div id="comments">
             <div class="media mb-3">
-                <?= Comment() ?>
+                <?= Comment("João", "Muito legal!") ?>
             </div>
             <?= CommentForm() ?>
         </div>
     </div>
     </div>
     </div>
-    <?= AuthModal() ?>
+
     <?= Footer() ?>
 </body>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
